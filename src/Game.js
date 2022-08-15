@@ -11,10 +11,9 @@ export default class Game extends React.Component {
     }
 
     handleClick() {
-        console.log("CLICK");
-        // this.setState({
-        //     squares: Array(30).fill("asdf"),
-        // });
+        this.setState({
+            squares: Array(30).fill("asdf"),
+        });
     }
 
     render() {
@@ -25,7 +24,7 @@ export default class Game extends React.Component {
                         squares={this.state.squares}
                     />
                 </div>
-                <button onClick={this.handleClick()}>change</button>
+                <button onClick={() => this.handleClick()}>change</button>
             </div>
             );
     }
