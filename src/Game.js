@@ -11,9 +11,15 @@ export default class Game extends React.Component {
     }
 
     handleClick() {
+        const squares = this.state.squares;
+        squares[0] = "asdf";
         this.setState({
-            squares: Array(30).fill("asdf"),
+            squares: squares,
         });
+    }
+
+    handleKeyDown = (e) => {
+        console.log(e);
     }
 
     render() {
@@ -24,7 +30,8 @@ export default class Game extends React.Component {
                         squares={this.state.squares}
                     />
                 </div>
-                <button onClick={() => this.handleClick()}>change</button>
+                <button
+                 onKeyDown={this.handleKeyDown}>change</button>
             </div>
             );
     }
