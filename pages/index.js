@@ -1,23 +1,11 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import Game from '../src/Game';
 
-const useEventListener = (handler, deps = []) => {
-  useEffect(() => {
-    document.addEventListener("keydown", handler);
-    return () => {
-      document.removeEventListener("keydown", handler);
-    };
-  }, deps);
-};
-
 export default function Home() {
-
-  useEventListener((evt) => {
-    console.log(evt)});
 
   return (
     <div className={styles.container}>
@@ -32,7 +20,9 @@ export default function Home() {
           Wordle Solver
         </h1>
 
-        <div id="root"><Game /></div>
+        <div id="root">
+          <Game />
+        </div>
         
       </main>
     </div>

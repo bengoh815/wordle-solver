@@ -6,32 +6,44 @@ export default class Game extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            squares: Array(30).fill("b"),
+            guess: '',
+            guesses: Array(6).fill("asdf"),
+            guessNum: 1,
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleClick() {
-        const squares = this.state.squares;
-        squares[0] = "asdf";
+    handleChange(event) {
+        this.setState({guess: event.target.value});
+    }
+
+    handleSubmit(event) {
+        const num = this.state.guessNum;
+        const arr = this.state.guesses.slice();
+        arr[num - 1] = this.state.guess;
         this.setState({
-            squares: squares,
+            guesses: arr,
+            guessNum: num + 1,
+            guess: '',
         });
-    }
-
-    handleKeyDown = (e) => {
-        console.log(e);
+        event.preventDefault();
     }
 
     render() {
         return (
             <div className="game">
+                <form onSubmit={this.handleSubmit}>
+                    <label>Guess Number {this.state.guessNum}: </label>
+                    <input type="text" value={this.state.guess} onChange={this.handleChange}></input>
+                    <button type="submit">Submit</button>
+                </form>
                 <div className="board">
                     <Board
-                        squares={this.state.squares}
+                        guesses={this.state.guesses}
                     />
                 </div>
-                <button
-                 onKeyDown={this.handleKeyDown}>change</button>
             </div>
             );
     }
