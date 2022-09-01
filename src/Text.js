@@ -4,9 +4,9 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Text() {
     const { words, error } = useSWR('/api/staticdata', fetcher);
-    console.log(words);
-    console.log("seperator");
-    console.log(error);
+    // console.log(words);
+    // console.log("seperator");
+    // console.log(error);
     if (error) return <div>Failed to load</div>;
 
     if (!words) return <div>Loading...</div>;

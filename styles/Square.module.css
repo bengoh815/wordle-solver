@@ -1,4 +1,10 @@
 .square {
-    border-color: aqua;
-    background-color: blue;
+    border: solid;
+    border-color: white;
+    border-width: 1px;
+    background-color: transparent;
+    flex-grow: 1;
+    font-size: 20px;
+    padding: 2px;
+    text-align: center;
 }

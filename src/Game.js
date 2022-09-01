@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './board';
 import Text from './text';
+import styles from '../styles/Game.module.css'
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -45,22 +46,18 @@ export default class Game extends React.Component {
 
     render() {
         return (
-            <div className="game">
-                <form onSubmit={this.handleSubmit}>
+            <div className={styles.game}>
+                <form className={styles.form} onSubmit={this.handleSubmit}>
                     <label>Guess Number {this.state.guessNum}: </label>
                     <input type="text" value={this.state.guess} onChange={this.handleChangeGuess}></input>
                     <input type="text" value={this.state.color} onChange={this.handleChangeColor}></input>
                     <button type="submit">Submit</button>
                 </form>
-                <div className="board">
-                    <Board
-                        guesses={this.state.guesses}
-                        colors={this.state.colors}
-                    />
-                </div>
-                <div className="text">
-                    <Text/>
-                </div>
+                <Board
+                    guesses={this.state.guesses}
+                    colors={this.state.colors}
+                />
+                <Text/>
             </div>
             );
     }

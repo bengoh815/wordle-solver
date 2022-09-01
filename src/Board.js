@@ -1,11 +1,11 @@
 import React from 'react';
 import Square from './Square'
+import styles from "../styles/Board.module.css"
 
 export default class Board extends React.Component {
     renderRow(i) {
-        // add flexbox?
         return (
-            <div>
+            <div className={styles.row}>
                 <Square 
                     value={this.props.guesses[i]}
                 />
@@ -18,7 +18,7 @@ export default class Board extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.board}>
                 {this.renderRow(0)}
                 {this.renderRow(1)}
                 {this.renderRow(2)}
