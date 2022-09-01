@@ -1,6 +1,6 @@
 import React from 'react';
 import Board from './board';
-import Square from './Square';
+import Text from './text';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -8,25 +8,37 @@ export default class Game extends React.Component {
         this.state = {
             guess: '',
             guesses: Array(6).fill("asdf"),
+            color: '',
+            colors: Array(6).fill("red"),
             guessNum: 1,
         };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChangeGuess = this.handleChangeGuess.bind(this);
+        this.handleChangeColor = this.handleChangeColor.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
+    handleChangeGuess(event) {
+        // handle validation?
         this.setState({guess: event.target.value});
+    }
+
+    handleChangeColor(event) {
+        this.setState({color: event.target.value});
     }
 
     handleSubmit(event) {
         const num = this.state.guessNum;
-        const arr = this.state.guesses.slice();
-        arr[num - 1] = this.state.guess;
+        const guessArr = this.state.guesses.slice();
+        const colorArr = this.state.colors.slice();
+        guessArr[num - 1] = this.state.guess;
+        colorArr[num - 1] = this.state.color;
         this.setState({
-            guesses: arr,
+            guesses: guessArr,
+            colors: colorArr,
             guessNum: num + 1,
             guess: '',
+            color: '',
         });
         event.preventDefault();
     }
@@ -36,13 +48,18 @@ export default class Game extends React.Component {
             <div className="game">
                 <form onSubmit={this.handleSubmit}>
                     <label>Guess Number {this.state.guessNum}: </label>
-                    <input type="text" value={this.state.guess} onChange={this.handleChange}></input>
+                    <input type="text" value={this.state.guess} onChange={this.handleChangeGuess}></input>
+                    <input type="text" value={this.state.color} onChange={this.handleChangeColor}></input>
                     <button type="submit">Submit</button>
                 </form>
                 <div className="board">
                     <Board
                         guesses={this.state.guesses}
+                        colors={this.state.colors}
                     />
+                </div>
+                <div className="text">
+                    <Text/>
                 </div>
             </div>
             );
