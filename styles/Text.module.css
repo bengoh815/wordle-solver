@@ -1,0 +1,7 @@
+.text p{
+    width: 600px;
+    height: 300px;
+    max-width: 600px;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+}

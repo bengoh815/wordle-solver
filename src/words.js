@@ -1,5 +1,4 @@
-{
-    "words": [
+export const words = [
     "aahed",
 "aalii",
 "aargh",
@@ -13112,4 +13111,3 @@
 "zymes",
 "zymic"
 ]
-}

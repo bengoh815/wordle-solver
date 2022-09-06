@@ -1,20 +1,11 @@
-import useSWR from 'swr';
+import style from '../styles/text.module.css';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-export default function Text() {
-    const { words, error } = useSWR('/api/staticdata', fetcher);
-    // console.log(words);
-    // console.log("seperator");
-    // console.log(error);
-    if (error) return <div>Failed to load</div>;
-
-    if (!words) return <div>Loading...</div>;
-    
+export default function Text(props) {
+    const word = props.text.map((str) => str + ", ");
     return (
-        <div>
+        <div className={style.text}>
             <p>
-                {words.words}
+                {word}
             </p>
         </div>
     );

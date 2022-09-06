@@ -2,6 +2,7 @@ import React from 'react';
 import Board from './board';
 import Text from './text';
 import styles from '../styles/Game.module.css'
+import { words } from './words';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -57,7 +58,10 @@ export default class Game extends React.Component {
                     guesses={this.state.guesses}
                     colors={this.state.colors}
                 />
-                <Text/>
+                <Text
+                    text={words}
+                    // text={"banana"}
+                />
             </div>
             );
     }
