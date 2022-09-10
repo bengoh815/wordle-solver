@@ -1,4 +1,4 @@
-import style from '../styles/text.module.css';
+import style from '../styles/Text.module.css';
 
 export default function Text(props) {
     const word = props.text.map((str) => str + ", ");

@@ -1,6 +1,6 @@
 import React from 'react';
-import Board from './board';
-import Text from './text';
+import Board from './Board';
+import Text from './Text';
 import styles from '../styles/Game.module.css'
 import { data } from './data';
 
